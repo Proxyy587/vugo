@@ -17,9 +17,9 @@ const Form = () => {
       <div className="form-container flex flex-col" data-aos="fade-in">
         <div className="introduction">
           <h1>
-            We're creating tools that will move forward your business. Working
-            through each idea we expand the business values and philosophy,
-            finding important solutions, which cause it to grow.
+            We&apos;re creating tools that will move forward your business.
+            Working through each idea we expand the business values and
+            philosophy, finding important solutions, which cause it to grow.
           </h1>
         </div>
         <form action="#">
