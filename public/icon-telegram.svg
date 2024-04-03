@@ -1,0 +1,15 @@
+<svg class="prevent-clear" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 77.21 77.21">
+  <defs>
+    <linearGradient id="telegram-gradient" data-name="Безымянный градиент 4" x1="38.6" x2="38.6" y2="77.21" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#52a2ca"/>
+      <stop offset="1" stop-color="#4382ba"/>
+    </linearGradient>
+  </defs>
+  <title>icon-telegram_1</title>
+  <g>
+    <circle cx="38.6" cy="38.6" r="38.6" fill="url(#telegram-gradient)"/>
+    <path d="M24.08,43.34,11.63,37.89a1.67,1.67,0,0,1,.15-3.11l47.33-15.6a1.67,1.67,0,0,1,2.15,2L51.8,61.36a1.67,1.67,0,0,1-2.68.91L38,53.17,24.08,43.34Z" fill="#e9edf5" fill-rule="evenodd"/>
+    <path d="M49.87,27.86,24.08,43.34,27.24,58a1.84,1.84,0,0,0,2.91,1.09L38,53.17l-6.47-5.29,19.15-19a.67.67,0,0,0-.81-1Z" fill="#b2b4bf" fill-rule="evenodd"/>
+    <path d="M28.28,59.26a1.83,1.83,0,0,0,1.87-.2L38,53.17l-3.23-2.65-3.23-2.65L28.28,59.26Z" fill="#a1a1b3" fill-rule="evenodd"/>
+  </g>
+</svg>
