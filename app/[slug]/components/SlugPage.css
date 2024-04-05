@@ -1,0 +1,37 @@
+.article {
+  width: 850px;
+  margin: 90px auto;
+  max-width: 1400px;
+}
+
+.article h1 {
+  font-weight: bold;
+  font-size: 3.3rem;
+  color: white;
+}
+
+.article div {
+  margin-top: 23px;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.likes_button {
+  margin-top: 150px;
+  color: white;
+  border-radius: 20px;
+  border: 1px solid #f6074a;
+  width: fit-content;
+  padding: 10px 25px;
+  transition: 0.3s all cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.likes_button:hover {
+  background-color: #f6074a;
+  box-shadow: 0 8px 32px 0 rgba(246, 7, 74, 0.5);
+}
+
+.likes {
+  margin-top: 10px;
+  text-align: center;
+}

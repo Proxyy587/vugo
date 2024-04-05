@@ -1,25 +1,84 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Center.css";
 import Masonry from "react-masonry-css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { Client, Databases } from "appwrite";
+import Footer from "../Footer/Footer";
 
-const breakpointColumnsObj = {
-  default: 3,
+var breakpointColumnsObj = {
+  default: 1,
   1231: 2,
   681: 1,
 };
 
 const Center = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [blogs, setBlogs] = useState([]);
+  const [distinctBlogs, setDistinctBlogs] = useState([]);
+  const [visibleBlogs, setVisibleBlogs] = useState(8);
+  const [selectedTopic, setSelectedTopic] = useState(null);
+  const [filteredBlogs, setFilteredBlogs] = useState([]);
+  const [hideButton, setHideButton] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const client = new Client();
+
   useEffect(() => {
+    const fetchData = async () => {
+      client
+        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setProject("660f004915234447151d");
+
+      try {
+        const databases = new Databases(client);
+        const response = await databases.listDocuments(
+          "660f00be04bfca0e2d1b",
+          "660f00c35dbe5e31356c",
+          []
+        );
+
+        setBlogs(response.documents);
+        if (response.documents.length === 1) {
+          breakpointColumnsObj = 1;
+        } else if (response.documents.length === 2) {
+          let newBreakpoint = {
+            default: 2,
+            681: 1,
+          };
+          breakpointColumnsObj(newBreakpoint);
+        }
+
+        const allTopics = Array.from(
+          new Set(response.documents.map((blog) => blog.topic))
+        );
+        setDistinctBlogs(allTopics);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+
     AOS.init({
       duration: 250,
     });
   }, []);
+
+  const handleShowMore = () => {
+    setVisibleBlogs((prevVisibleBlogs) => prevVisibleBlogs + 8);
+    if (visibleBlogs > blogs.length) {
+      setHideButton(true);
+    }
+  };
+
+  const handleTopicClick = (topic) => {
+    setSelectedTopic(topic);
+    const filtered = blogs.filter((blog) => blog.topic === topic);
+    setFilteredBlogs(filtered);
+    setVisibleBlogs(8);
+  };
 
   return (
     <>
@@ -28,84 +87,44 @@ const Center = () => {
           <h1 className="text-white font-bold">
             <span className="underlined">All</span> publications
           </h1>
-          <div className="topic">digital</div>
-          <div className="topic">News</div>
-          <div className="topic">Our history</div>
-          <div className="topic">And</div>
+          {distinctBlogs.map((blogTopic, index) => (
+            <div
+              key={index}
+              className={`topic ${selectedTopic === blogTopic ? "active" : ""}`}
+              onClick={() => handleTopicClick(blogTopic)}
+            >
+              {blogTopic}
+            </div>
+          ))}
         </div>
         <Masonry
           breakpointCols={breakpointColumnsObj}
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"
         >
-          <div className="blog flex flex-col gap-2 cursor-pointer">
-            <div className="blog-topic">digital</div>
-            <div className="blog-title">
-              Packaging design trends that are popular in 2023, 17 examples of
-              cool packaging
-            </div>
-            <div className="blog-content">
-              One of the main trends of the coming era is the desire for
-              simplicity and minimalism. Manufacturers have moved to creating
-              packaging without unnecessary parts to save on coloring costs.
-              This decision is made taking into account..
-            </div>
-          </div>
-
-          <div className="blog flex flex-col gap-2 cursor-pointer">
-            <div className="blog-topic">StandWithUkraine</div>
-            <div className="blog-title">
-              Рожеві єдінорожки та райдужки? Hi. Трішки про ситуацію
-            </div>
-            <div className="blog-content">
-              Війна - важкий та переломний час для кожного з нас. 24 лютого
-              змінило кожного з нас. Наше життя розділилося на «до» та «після».
-            </div>
-          </div>
-
-          <div className="blog flex flex-col gap-2 cursor-pointer">
-            <div className="blog-topic">digital</div>
-            <div className="blog-title">
-              Packaging design trends that are popular in 2023, 17 examples of
-              cool packaging
-            </div>
-            <div className="blog-content">
-              One of the main trends of the coming era is the desire for
-              simplicity and minimalism. Manufacturers have moved to creating
-              packaging without unnecessary parts to save on coloring costs.
-              This decision is made taking into account..
-            </div>
-          </div>
-          <div className="blog flex flex-col gap-2 cursor-pointer">
-            <div className="blog-topic">digital</div>
-            <div className="blog-title">
-              Packaging design trends that are popular in 2023, 17 examples of
-              cool packaging
-            </div>
-            <div className="blog-content">
-              One of the main trends of the coming era is the desire for
-              simplicity and minimalism. Manufacturers have moved to creating
-              packaging without unnecessary parts to save on coloring costs.
-              This decision is made taking into account..
-            </div>
-          </div>
-          <div className="blog flex flex-col gap-2 cursor-pointer">
-            <div className="blog-topic">StandWithUkraine</div>
-            <div className="blog-title">
-              Рожеві єдінорожки та райдужки? Hi. Трішки про ситуацію
-            </div>
-            <div className="blog-content">
-              Війна - важкий та переломний час для кожного з нас. 24 лютого
-              змінило кожного з нас. Наше життя розділилося на «до» та «після».
-              Календарні дні, як такі, перестали існувати - …
-            </div>
-          </div>
+          {(selectedTopic ? filteredBlogs : blogs)
+            .slice(0, visibleBlogs)
+            .map((blog, index) => (
+              <a
+                key={index}
+                href={`/${blog.slug}`}
+                className="blog flex flex-col gap-2 cursor-pointer"
+              >
+                <div className="blog-topic">{blog.topic}</div>
+                <div className="blog-title">{blog.title}</div>
+                <div className="blog-content">{blog.title}</div>
+              </a>
+            ))}
         </Masonry>
+        {!loading &&
+          visibleBlogs <
+            (selectedTopic ? filteredBlogs.length : blogs.length) && (
+            <div className="show-more cursor-pointer" data-aos="zoom-out">
+              <button onClick={handleShowMore}>Show More</button>
+            </div>
+          )}
       </div>
-
-      <div className="show-more cursor-pointer" data-aos="zoom-out">
-        <button>Show More</button>
-      </div>
+      {!loading && <Footer loaded={true} />}
     </>
   );
 };

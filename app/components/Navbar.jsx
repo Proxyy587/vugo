@@ -110,21 +110,15 @@ const Navbar = () => {
                 onInit={(typewriter) => {
                   typewriter
                     .typeString("Branding & Web.")
-                    .callFunction(() => {
-                      console.log("String typed out!");
-                    })
+                    .callFunction(() => {})
                     .pauseFor(2000)
                     .deleteAll()
                     .typeString("I do comfortable UI for apps.")
-                    .callFunction(() => {
-                      console.log("All strings were deleted");
-                    })
+                    .callFunction(() => {})
                     .pauseFor(2000)
                     .deleteAll()
                     .typeString("russian pigs go to your fuckin home.")
-                    .callFunction(() => {
-                      console.log("All strings were deleted");
-                    })
+                    .callFunction(() => {})
                     .pauseFor(2000)
                     .deleteAll()
                     .typeString("logo for real business.")

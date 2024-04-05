@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { useState } from "react";
-import "./Footer.css";
+import "./ArticleFooter.css";
 import { motion } from "framer-motion";
 
-const Footer = ({ loaded }) => {
+const ArticleFooter = ({ loaded }) => {
   const [ZOpen, setZOpen] = useState(false);
 
   return (
@@ -13,7 +13,7 @@ const Footer = ({ loaded }) => {
         <motion.div
           onHoverStart={() => setZOpen(true)}
           onHoverEnd={() => setZOpen(false)}
-          className="footer text-white flex justify-between px-8 py-6 "
+          className="footer_article text-white flex justify-between px-8 py-6 "
         >
           <div className="left">
             <h1>
@@ -23,12 +23,7 @@ const Footer = ({ loaded }) => {
               </a>
             </h1>
           </div>
-          <div
-            className={`middle text-3xl ${ZOpen ? "bounce" : ""}`}
-            onClick={() => {
-              window.location.href = "/contact";
-            }}
-          >
+          <div className={`middle text-3xl ${ZOpen ? "bounce" : ""}`}>
             Submit request.
           </div>
           <div className="right flex gap-10">
@@ -54,4 +49,4 @@ const Footer = ({ loaded }) => {
   );
 };
 
-export default Footer;
+export default ArticleFooter;

@@ -1,8 +1,7 @@
-.footer {
-  margin-top: 200px;
+.footer_article {
   box-shadow: 0px 50px 70px 10px #f6074a;
-  overflow: hidden;
-  position: relative;
+  position: fixed;
+  bottom: 0;
   width: 100%;
 }
 
