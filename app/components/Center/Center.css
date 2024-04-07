@@ -102,12 +102,10 @@
   flex-wrap: wrap;
 }
 
-@media only screen and (max-width: 1222px) {
-  .center {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.center {
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .preloader-container {

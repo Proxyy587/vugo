@@ -7,11 +7,7 @@ import "aos/dist/aos.css";
 import { Client, Databases } from "appwrite";
 import Footer from "../Footer/Footer";
 
-var breakpointColumnsObj = {
-  default: 1,
-  1231: 2,
-  681: 1,
-};
+var breakpointColumnsObj = {};
 
 const Center = () => {
   const [blogs, setBlogs] = useState([]);
@@ -27,7 +23,7 @@ const Center = () => {
     const fetchData = async () => {
       client
         .setEndpoint("https://cloud.appwrite.io/v1")
-        .setProject("660f004915234447151d");
+        .setProject("66119b0b4242be90dfe0");
 
       try {
         const databases = new Databases(client);
@@ -45,7 +41,14 @@ const Center = () => {
             default: 2,
             681: 1,
           };
-          breakpointColumnsObj(newBreakpoint);
+          breakpointColumnsObj = newBreakpoint;
+        } else {
+          let newBreakpoint = {
+            default: 3,
+            1000: 2,
+            602: 1,
+          };
+          breakpointColumnsObj = newBreakpoint;
         }
 
         const allTopics = Array.from(
