@@ -35,7 +35,7 @@ const Center = () => {
         );
 
         setBlogs(response.documents);
-        if (!response.documents.length) {
+        if (response.documents.length === 0) {
           setnoblogs(true);
         }
         if (response.documents.length === 1) {
@@ -65,6 +65,8 @@ const Center = () => {
         setLoading(false);
       }
     };
+
+    console.log(noblogs);
 
     fetchData();
 

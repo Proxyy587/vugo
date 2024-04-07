@@ -4,7 +4,7 @@ import { useState } from "react";
 import "./Footer.css";
 import { motion } from "framer-motion";
 
-const Footer = ({ loaded, fixed, slugPage }) => {
+const Footer = ({ loaded, fixed }) => {
   const [ZOpen, setZOpen] = useState(false);
 
   return (
@@ -14,8 +14,8 @@ const Footer = ({ loaded, fixed, slugPage }) => {
           onHoverStart={() => setZOpen(true)}
           onHoverEnd={() => setZOpen(false)}
           className={`${
-            fixed || slugPage ? "fixed_footer" : ""
-          } footer text-white flex justify-between px-8 py-6 `}
+            fixed === true ? "fixed_footer" : "footer"
+          }  text-white flex justify-between px-8 py-6 `}
         >
           <div className="left">
             <h1>
