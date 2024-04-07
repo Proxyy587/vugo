@@ -17,6 +17,7 @@ const Center = () => {
   const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [hideButton, setHideButton] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [noblogs, setnoblogs] = useState(false);
   const client = new Client();
 
   useEffect(() => {
@@ -34,6 +35,9 @@ const Center = () => {
         );
 
         setBlogs(response.documents);
+        if (!response.documents.length) {
+          setnoblogs(true);
+        }
         if (response.documents.length === 1) {
           breakpointColumnsObj = 1;
         } else if (response.documents.length === 2) {
@@ -127,7 +131,7 @@ const Center = () => {
             </div>
           )}
       </div>
-      {!loading && <Footer loaded={true} />}
+      {!loading && <Footer loaded={true} fixed={setnoblogs} />}
     </>
   );
 };
