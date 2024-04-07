@@ -10,16 +10,17 @@ const SlugPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const client = new Client()
+    const client = new Client();
+    client
       .setEndpoint("https://cloud.appwrite.io/v1")
-      .setProject("660f004915234447151d");
+      .setProject("66119b0b4242be90dfe0");
 
     const fetchData = async () => {
       try {
         const databases = new Databases(client);
         const response = await databases.listDocuments(
-          "660f00be04bfca0e2d1b",
-          "660f00c35dbe5e31356c",
+          "66119d55452d9f051ed9",
+          "66119d5f63c467350a5b",
           [Query.equal("slug", slug)]
         );
         if (response.documents.length > 0) {
