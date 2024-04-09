@@ -6,6 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Client, Databases } from "appwrite";
 import Footer from "../Footer/Footer";
+import Markdown from "react-markdown";
 
 var breakpointColumnsObj = {};
 
@@ -18,19 +19,27 @@ const Center = () => {
   const [hideButton, setHideButton] = useState(false);
   const [loading, setLoading] = useState(true);
   const [noblogs, setnoblogs] = useState(false);
+  const [selected, setSelected] = useState([]);
   const client = new Client();
+
+  const handleClickTopic = (index) => {
+    let arr = [...selected];
+    for (let i = 0; i < arr.length; ++i) arr[i] = "";
+    arr[index] = "sel";
+    setSelected(arr);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       client
         .setEndpoint("https://cloud.appwrite.io/v1")
-        .setProject("660f004915234447151d");
+        .setProject(process.env.NEXT_PUBLIC_CLOUD_ID);
 
       try {
         const databases = new Databases(client);
         const response = await databases.listDocuments(
-          "660f00be04bfca0e2d1b",
-          "660f00c35dbe5e31356c",
+          process.env.NEXT_PUBLIC_DATABASE_ID,
+          process.env.NEXT_PUBLIC_COLLECTION_ID,
           []
         );
 
@@ -88,7 +97,8 @@ const Center = () => {
     }
   };
 
-  const handleTopicClick = (topic) => {
+  const handleTopicClick = (topic, index) => {
+    handleClickTopic(index);
     setSelectedTopic(topic);
     const filtered = blogs.filter((blog) => blog.topic === topic);
     setFilteredBlogs(filtered);
@@ -105,8 +115,10 @@ const Center = () => {
           {distinctBlogs.map((blogTopic, index) => (
             <div
               key={index}
-              className={`topic ${selectedTopic === blogTopic ? "active" : ""}`}
-              onClick={() => handleTopicClick(blogTopic)}
+              className={`topic ${
+                selected[index] === "sel" ? "selected no-border" : "border_"
+              } ${selectedTopic === blogTopic ? "active" : ""}`}
+              onClick={() => handleTopicClick(blogTopic, index)}
             >
               {blogTopic}
             </div>
@@ -127,7 +139,9 @@ const Center = () => {
               >
                 <div className="blog-topic">{blog.topic}</div>
                 <div className="blog-title">{blog.title}</div>
-                <div className="blog-content">{truncate(blog.content)}</div>
+                <div className="blog-content">
+                  <Markdown>{truncate(blog.content)}</Markdown>
+                </div>
               </a>
             ))}
         </Masonry>

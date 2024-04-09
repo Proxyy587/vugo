@@ -16,14 +16,14 @@ const SlugPage = () => {
     const client = new Client();
     client
       .setEndpoint("https://cloud.appwrite.io/v1")
-      .setProject("660f004915234447151d");
+      .setProject(process.env.NEXT_PUBLIC_CLOUD_ID);
 
     const fetchData = async () => {
       try {
         const databases = new Databases(client);
         const response = await databases.listDocuments(
-          "660f00be04bfca0e2d1b",
-          "660f00c35dbe5e31356c",
+          process.env.NEXT_PUBLIC_DATABASE_ID,
+          process.env.NEXT_PUBLIC_COLLECTION_ID,
           [Query.equal("slug", slug)]
         );
         if (response.documents.length > 0) {
@@ -52,7 +52,7 @@ const SlugPage = () => {
           <div className="article">
             <h1>{blogData.title}</h1>
             <div className="content">
-              <Markdown>{blogData.content}</Markdown>
+              <Markdown className="foo">{blogData.content}</Markdown>
             </div>
           </div>
         </>

@@ -4,6 +4,15 @@
   max-width: 1400px;
 }
 
+.foo {
+  white-space: "pre-wrap";
+}
+
+.selected {
+  font-weight: bold;
+  border: 1px solid #f6074a;
+}
+
 .article h1 {
   font-weight: bold;
   font-size: 3.3rem;

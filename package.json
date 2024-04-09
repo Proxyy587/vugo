@@ -12,6 +12,7 @@
     "aos": "^2.3.4",
     "appwrite": "^13.0.2",
     "framer-motion": "^11.0.24",
+    "million": "^3.0.6",
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18",

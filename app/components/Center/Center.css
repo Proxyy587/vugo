@@ -5,6 +5,11 @@
   margin-right: auto;
 }
 
+.selected {
+  font-weight: bolder;
+  border-bottom: 2px solid #f6074a;
+}
+
 .topics h1 {
   font-size: 1.2rem;
 }
@@ -26,11 +31,19 @@
   padding: 10px;
 }
 
+.no-border {
+  border-radius: 0px;
+}
+
+.border_ {
+  border-radius: 20px;
+  color: white;
+}
+
 .topic {
   color: #a0989e;
   transition: 0.3s all cubic-bezier(0.165, 0.84, 0.44, 1);
   padding: 7px 15px;
-  border-radius: 20px;
 }
 
 .topic:hover {
