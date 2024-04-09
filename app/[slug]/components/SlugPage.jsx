@@ -50,6 +50,15 @@ const SlugPage = () => {
       {!loading && blogData && (
         <>
           <div className="article">
+            <p className="text-white py-4">
+              <a href="/" className="underline underline-offset-4">
+                blog
+              </a>{" "}
+              /{" "}
+              <span className="text-gray-300 underline underline-offset-4">
+                {slug}
+              </span>
+            </p>
             <h1>{blogData.title}</h1>
             <div className="content">
               <Markdown className="foo">{blogData.content}</Markdown>
