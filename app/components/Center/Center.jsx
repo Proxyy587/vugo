@@ -30,7 +30,6 @@ const Center = () => {
   };
 
   useEffect(() => {
-    console.log("key",process.env.NEXT_PUBLIC_CLOUD_ID)
     const fetchData = async () => {
       client
         .setEndpoint("https://cloud.appwrite.io/v1")
