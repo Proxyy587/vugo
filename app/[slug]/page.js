@@ -18,7 +18,7 @@ const Page = () => {
   return (
     <>
       <Navbar />
-      <SlugPage />x{showFooter && <Footer loaded={true} />}
+      <SlugPage />
     </>
   );
 };

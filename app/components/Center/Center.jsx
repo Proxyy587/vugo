@@ -24,13 +24,13 @@ const Center = () => {
     const fetchData = async () => {
       client
         .setEndpoint("https://cloud.appwrite.io/v1")
-        .setProject("66119b0b4242be90dfe0");
+        .setProject("660f004915234447151d");
 
       try {
         const databases = new Databases(client);
         const response = await databases.listDocuments(
-          "66119d55452d9f051ed9",
-          "66119d5f63c467350a5b",
+          "660f00be04bfca0e2d1b",
+          "660f00c35dbe5e31356c",
           []
         );
 
@@ -74,6 +74,12 @@ const Center = () => {
       duration: 250,
     });
   }, []);
+
+  function truncate(text) {
+    let purified = text.slice(0, 100);
+    purified += text.length <= 100 ? "" : "....";
+    return purified;
+  }
 
   const handleShowMore = () => {
     setVisibleBlogs((prevVisibleBlogs) => prevVisibleBlogs + 8);
@@ -121,7 +127,7 @@ const Center = () => {
               >
                 <div className="blog-topic">{blog.topic}</div>
                 <div className="blog-title">{blog.title}</div>
-                <div className="blog-content">{blog.title}</div>
+                <div className="blog-content">{truncate(blog.content)}</div>
               </a>
             ))}
         </Masonry>

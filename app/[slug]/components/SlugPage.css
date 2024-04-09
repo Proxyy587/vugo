@@ -35,3 +35,15 @@
   margin-top: 10px;
   text-align: center;
 }
+
+@media only screen and (max-width: 916px) {
+  .article {
+    width: 89%;
+  }
+}
+
+@media only screen and (max-width: 573px) {
+  .article {
+    width: 93%;
+  }
+}

@@ -52,17 +52,23 @@ const Navbar = () => {
               NavbarOpen ? "show-center-navbar" : ""
             } origin-top`}
           >
-            <a href="#" className="cool__link__center">
+            <a
+              href="#"
+              className="cool__link__center"
+              onClick={() => {
+                window.location.href = "/";
+              }}
+            >
               Home
             </a>
             <a href="/contact" className="cool__link__center">
               Contact
             </a>
             <a href="#" className="cool__link__center">
-              About us
+              Blog
             </a>
             <a href="#" className="cool__link__center">
-              Features
+              Services
             </a>
             <div className="languages-center flex gap-10">
               <a href="#" className="cool__link">
@@ -129,13 +135,19 @@ const Navbar = () => {
           </div>
           <ul className="flex gap-9 items-center">
             <li>
-              <a href="#" className="cool__link">
-                About us
+              <a
+                href="#"
+                className="cool__link"
+                onClick={() => {
+                  window.location.href = "/";
+                }}
+              >
+                Home
               </a>
             </li>
             <li>
               <a href="#" className="cool__link">
-                Projects
+                About us
               </a>
             </li>
             <li>
