@@ -109,7 +109,12 @@ const Center = () => {
     <>
       <div className="center flex flex-col" data-aos="fade-in">
         <div className="topics flex gap-6 cursor-pointer items-center">
-          <h1 className="text-white font-bold">
+          <h1
+            className="text-white font-bold"
+            onClick={() => {
+              location.reload();
+            }}
+          >
             <span className="underlined">All</span> publications
           </h1>
           {distinctBlogs.map((blogTopic, index) => (
