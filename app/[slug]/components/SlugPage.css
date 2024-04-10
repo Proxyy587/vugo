@@ -55,8 +55,21 @@ p {
   }
 }
 
+.content h1 {
+  font-size: 1.8rem;
+}
+
 @media only screen and (max-width: 573px) {
   .article {
     width: 93%;
+  }
+}
+
+@media only screen and (max-width: 507px) {
+  .article h1 {
+    font-size: 1.8rem;
+  }
+  .content h1 {
+    font-size: 1.7rem;
   }
 }
