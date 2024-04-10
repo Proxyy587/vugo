@@ -4,6 +4,10 @@
   max-width: 1400px;
 }
 
+p {
+  margin-bottom: 30px;
+}
+
 .foo {
   white-space: "pre-wrap";
 }
