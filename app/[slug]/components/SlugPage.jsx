@@ -9,6 +9,7 @@ import Footer from "@/app/components/Footer/Footer";
 const SlugPage = () => {
   const { slug } = useParams();
   const [blogData, setBlogData] = useState(null);
+
   const [loading, setLoading] = useState(true);
   const [notnull, setNotNull] = useState(false);
 

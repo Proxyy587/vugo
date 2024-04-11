@@ -56,7 +56,35 @@ p {
 }
 
 .content h1 {
-  font-size: 1.8rem;
+  font-size: 2rem;
+  margin-top: 10px;
+}
+
+.content h2 {
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.content h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.content h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.content h4 {
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.content a {
+  border-bottom: 2px solid white;
 }
 
 @media only screen and (max-width: 573px) {
@@ -67,9 +95,47 @@ p {
 
 @media only screen and (max-width: 507px) {
   .article h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   .content h1 {
     font-size: 1.7rem;
   }
+  .content h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .content h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  .content h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .content h4 {
+    font-size: 1rem;
+  }
+}
+
+ul p {
+  margin: 0;
+}
+
+ul {
+  margin: 20px 30px;
+}
+
+ol p {
+  margin: 0;
+}
+
+ol {
+  margin: 20px 30px;
+}
+
+li {
+  margin: 6px 0px;
 }
